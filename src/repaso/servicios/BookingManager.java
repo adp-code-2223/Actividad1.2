@@ -76,7 +76,7 @@ public class BookingManager {
 
     private boolean existeDni(String dni) {
         boolean encontrado = false;
-        for (int i = 0; (!encontrado) && i < reservasPorFranja[MIN_FRANJAS-1].length; i++) {
+        for (int i = 0; (!encontrado) && i< MAX_FRANJAS; i++) {
             for (int j = 0; (!encontrado) && j < reservasPorFranja[i].length; j++) {
                 if ((reservasPorFranja[i][j] != null)
                         && (reservasPorFranja[i][j].compareToIgnoreCase(dni) == 0)) {
