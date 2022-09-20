@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package repasojava;
+package repaso;
 
-import repasojava.model.Piscina;
-import repasojava.util.DuplicateDNIException;
-import repasojava.util.IOManager;
-import repasojava.utils.Util;
-import repasojava.reservasService.BookingManager;
+import repaso.model.Piscina;
+import repaso.util.DuplicateDNIException;
+import repaso.util.IOManager;
+import repaso.util.Util;
+import repaso.servicios.BookingManager;
 
 /**
  *
@@ -67,7 +67,7 @@ public class Ejercicio_Piscina {
             } else {
 
                 do {
-                    dni = IOManager.leerString("Introduzca dni: ");
+                    dni = IOManager.leerCadena("Introduzca dni: ");
                     isValidDni = Util.isDniValid(dni);
 
                     if (!isValidDni) {

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package repasojava.util;
+package repaso.util;
 
 import java.util.Scanner;
 
@@ -30,7 +30,7 @@ public class IOManager {
         return entero;
     }
 
-    public static String leerString(String msg) {
+    public static String leerCadena(String msg) {
         String cadena="";
         Scanner sc = new Scanner(System.in);
         try {

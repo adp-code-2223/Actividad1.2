@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package repasojava.reservasService;
+package repaso.servicios;
 
-import repasojava.model.Piscina;
-import repasojava.util.DuplicateDNIException;
+import repaso.model.Piscina;
+import repaso.util.DuplicateDNIException;
 
 /**
  *
@@ -34,6 +34,17 @@ public class BookingManager {
         }
         return vacio;
     }
+    
+    //Otra posibilidad
+//     public boolean isDisponible(int franja) {
+//
+//        for (String item : reservasPorFranja[franja - 1]) {
+//            if( item == null)
+//                return true;
+//        }
+//        return false;
+//
+//    }
 
     public boolean reservar(int franja, String dni) throws DuplicateDNIException {
         boolean reservado = false;
