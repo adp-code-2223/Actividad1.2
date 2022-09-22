@@ -4,6 +4,10 @@
  */
 package repaso;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import repaso.config.Config;
 import repaso.model.Piscina;
 import repaso.util.DuplicateDNIException;
 import repaso.util.IOManager;
@@ -16,6 +20,9 @@ import repaso.servicios.BookingManager;
  */
 public class Ejercicio_Piscina {
 
+    private static final String CONFIG_FILE ="piscina.config";
+    
+    
     private static BookingManager bookingManager;
     /**
      * @param args the command line arguments
@@ -27,6 +34,8 @@ public class Ejercicio_Piscina {
         int ancho_parcela = 0;
         Piscina piscina;
         int aforo = 0;
+        
+        crearConfigFile();
 
         long_vaso = IOManager.leerEnteroPositivo("Introduzca longitud de la piscina: ");
         ancho_vaso = IOManager.leerEnteroPositivo("Introduzca anchura de la piscina: ");
@@ -41,6 +50,18 @@ public class Ejercicio_Piscina {
         bookingManager = new BookingManager(piscina);
         reservar();
 
+    }
+    
+    private static void crearConfigFile(){
+        
+        if(!Files.exists(Paths.get(CONFIG_FILE))){
+            HashMap<String, String> mapa = new HashMap<>();
+            mapa.put("start", "true");
+            mapa.put("persistencia", "true");
+            mapa.put("max_franjas", "4");
+            
+            Config.crearConfigFile(mapa, CONFIG_FILE);
+        }
     }
 /***
  * Gestiona las reservas por teclado en un bucle continuo
