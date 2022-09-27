@@ -4,11 +4,13 @@
  */
 package repaso.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mfernandez
  */
-public class Piscina {
+public class Piscina implements Serializable  {
     
     private final int MAX_DIST = 2;
     
