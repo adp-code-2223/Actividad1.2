@@ -36,7 +36,11 @@ public class Ejercicio_Piscina {
         int aforo = 0;
         
         crearConfigFile();
-
+        String clave = "persistencia";
+        String valor = Config.leerConfig(CONFIG_FILE, clave);
+        System.out.println("El valor de la clave: " +clave + " es: " + valor );
+        
+        
         long_vaso = IOManager.leerEnteroPositivo("Introduzca longitud de la piscina: ");
         ancho_vaso = IOManager.leerEnteroPositivo("Introduzca anchura de la piscina: ");
         long_parcela = IOManager.leerEnteroPositivo("Introduzca longitud de la parcela: ");
