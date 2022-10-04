@@ -50,6 +50,11 @@ public class Piscina implements Serializable  {
         return aforo_temp;
         
     }
+
+    @Override
+    public String toString() {
+        return "Piscina{" + "MAX_DIST=" + MAX_DIST + ", long_vaso=" + long_vaso + ", long_parcela=" + long_parcela + ", ancho_vaso=" + ancho_vaso + ", ancho_parcela=" + ancho_parcela + ", aforo=" + aforo + '}';
+    }
     
           
     

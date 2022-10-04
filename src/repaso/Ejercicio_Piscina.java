@@ -30,34 +30,59 @@ public class Ejercicio_Piscina {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int long_vaso = 0;
-        int ancho_vaso = 0;
-        int long_parcela = 0;
-        int ancho_parcela = 0;
-        Piscina piscina;
+        
+        Piscina piscina=null;
         int aforo = 0;
 
         crearConfigFile();
         String clave = "persistencia";
         String valor = Config.leerConfig(CONFIG_FILE, clave);
         System.out.println("El valor de la clave: " + clave + " es: " + valor);
+        
+        if(Files.exists(Paths.get(PISCINA_FILE))){
+            piscina = FilePersistencia.read(PISCINA_FILE);
+        }
+        if(piscina == null){
+            piscina = leerDatosPiscinaTeclado();
+        }
 
+//        long_vaso = IOManager.leerEnteroPositivo("Introduzca longitud de la piscina: ");
+//        ancho_vaso = IOManager.leerEnteroPositivo("Introduzca anchura de la piscina: ");
+//        long_parcela = IOManager.leerEnteroPositivo("Introduzca longitud de la parcela: ");
+//        ancho_parcela = IOManager.leerEnteroPositivo("Introduzca anchura de la parcela: ");
+//
+//        piscina = new Piscina(long_vaso, long_parcela, ancho_vaso, ancho_parcela);
+//
+//        FilePersistencia.write(piscina, PISCINA_FILE);
+        
+     //   Piscina piscinaRecuperada = FilePersistencia.read(PISCINA_FILE);
+        
+        if(piscina!=null){
+            System.out.println("La piscina recuperada es: " + piscina.toString());
+        }
+
+       aforo = piscina.getAforo();
+
+        System.out.println("El aforo de la piscina es: " + aforo + " personas");
+
+        //bookingManager = new BookingManager(piscina);
+        reservar();
+
+    }
+    
+    private static Piscina leerDatosPiscinaTeclado(){
+        int long_vaso = 0;
+        int ancho_vaso = 0;
+        int long_parcela = 0;
+        int ancho_parcela = 0;
+        Piscina piscina = null;
         long_vaso = IOManager.leerEnteroPositivo("Introduzca longitud de la piscina: ");
         ancho_vaso = IOManager.leerEnteroPositivo("Introduzca anchura de la piscina: ");
         long_parcela = IOManager.leerEnteroPositivo("Introduzca longitud de la parcela: ");
         ancho_parcela = IOManager.leerEnteroPositivo("Introduzca anchura de la parcela: ");
 
         piscina = new Piscina(long_vaso, long_parcela, ancho_vaso, ancho_parcela);
-
-        FilePersistencia.write(piscina, PISCINA_FILE);
-
-        aforo = piscina.getAforo();
-
-        System.out.println("El aforo de la piscina es: " + aforo + " personas");
-
-        bookingManager = new BookingManager(piscina);
-        reservar();
-
+        return piscina;
     }
 
     private static void crearConfigFile() {
