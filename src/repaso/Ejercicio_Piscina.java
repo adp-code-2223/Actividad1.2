@@ -39,6 +39,8 @@ public class Ejercicio_Piscina {
         String valor = Config.leerConfig(CONFIG_FILE, clave);
         System.out.println("El valor de la clave: " + clave + " es: " + valor);
         
+  
+        
         if(Files.exists(Paths.get(PISCINA_FILE))){
             piscina = FilePersistencia.read(PISCINA_FILE);
         }
