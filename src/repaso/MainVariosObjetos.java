@@ -27,7 +27,7 @@ public class MainVariosObjetos {
 
         FilePersistencia.writeList(piscinas, PISCINAS_FILE);
 
-        piscinas = FilePersistencia.readList(PISCINAS_FILE);
+        piscinas = FilePersistencia.readList2(PISCINAS_FILE);
 
         System.out.println("Se han recuperado: " + piscinas.toString());
 

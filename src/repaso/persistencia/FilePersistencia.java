@@ -58,7 +58,8 @@ public class FilePersistencia {
         return piscina;
     }
 
-    public static void writeList(ArrayList<Piscina> piscinas, String ruta) {
+    public static void writeList(ArrayList<Piscina> piscinas,
+            String ruta) {
 
         try (
                  FileOutputStream fos = new FileOutputStream(ruta);  ObjectOutputStream oos = new ObjectOutputStream(fos);) {
@@ -84,7 +85,7 @@ public class FilePersistencia {
         try (
                  FileInputStream fis = new FileInputStream(ruta);  ObjectInputStream ois = new ObjectInputStream(fis);) {
 
-            while (!eof) {
+            while (true) {
                 try {
                     object = ois.readObject();
 
@@ -99,6 +100,43 @@ public class FilePersistencia {
                 }
             }
 
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            System.err.println("Ha ocurrido una excepción: " + ex.getMessage());
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.err.println("Ha ocurrido una excepción: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+            System.err.println("Ha ocurrido una excepción: " + ex.getMessage());
+        }
+
+        return piscinas;
+    }
+
+    public static ArrayList<Piscina> readList2(String ruta) {
+        Piscina piscina = null;
+        ArrayList<Piscina> piscinas = new ArrayList();
+        Object object = null;
+       // boolean eof = false;
+
+        try (
+                 FileInputStream fis = new FileInputStream(ruta);  ObjectInputStream ois = new ObjectInputStream(fis);) {
+
+            while (  (object = ois.readObject())!=null) {
+               
+
+                if (object instanceof Piscina) {
+                    piscina = (Piscina) object;
+                    piscinas.add(piscina);
+                }
+
+            }
+        } catch (EOFException ex) {
+            //eof = true;
+            //ex.printStackTrace();
+            System.err.println("Se ha alcanzado el final del fichero: " + ex.getMessage());
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             System.err.println("Ha ocurrido una excepción: " + ex.getMessage());
